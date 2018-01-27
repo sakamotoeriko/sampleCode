@@ -1,3 +1,2 @@
-# AVCaptureMetadataOutputSample_QRCodeReader
-AVFoundation(AVCaptureMetadataOutput)を使用したQRコード読み取りサンプル
+AVFoundation(AVCaptureMetadataOutput) QRコードの読み方
 # sampleCode

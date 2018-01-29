@@ -1,0 +1,282 @@
+GeneXus の筆記  by　ーーーCaijy
+12/11
+１：Java環境の場合、先にTomcatのインストールが必要　ーー＞（ビルドできない）（先に前のENVを削除して、新規作成すると回避できる）
+２：テンプレート：WorkWithPlus-->import テンプレート
+３：SQLEXPRESS プロトコルのTCP/IP 起動　—>IPALL 動的ポート1433に設定
+
+12/12
+１：Levelはリレーション、外部キーとして使う
+２：複数チェックボックス  (??)
+３：自動採番　（カスタマイズ） AutoNumber属性
+４：richtext  (??)
+５：正規チェック処理 
+６：ファイルのアップロード (blob会存数据库)
+        控件会存在 一个private的文件夹，而DB里只存放一个路径
+
+
+12/13
+１：Formulas 公式    項目*項目　計算式
+２：android工程只生成，不要自动编译关联。（？）
+3：添加各种自定义的规则 （例：値の初期化処理、チェック処理） 
+４： 不能变换GXSimpleCollection<Byte>　GXSimpleCollection<Short> (バージョン問題)
+5：インスタンス更新が重要(あとから追加した項目は更新しないとビルドエラーが発生)
+
+12/14-15
+１：rules　控件関連
+　　Default(InvoiceDate, &today);
+　　Error("購入数量を入力してください") if LineQuantity.IsEmpty(); 
+　　保存不上的问题
+２：root form として設定する(例：LoginForm)
+３：コンポネートの使い方(URL, 項目/属性など)  HTMLの編集モード　（既存システムのCSSを流用したい場合 ?）
+４：Event  Enter /EndEvent   msg   
+５：procedureはデータベースへのアクセスと画面上変数とDBの内容を判断処理などを使われます。
+６：テーブル名称変更後、検出できないこと（テーブル名を表示、手動変更）（循環参照の場合、削除、変更もできない注意ください）
+７：source: whereの下にattributeは前になる時、検索という意味。&Flag= true(検索)　sysdate= &today (更新)
+８：変数のパラメータ：in out(結果を受け取る)
+
+12/18
+１：文字化け(source)の注意事項
+２：画面遷移先のEvent処理に、websession.getを取得　
+（自分で定義したものは実際システムのセッションを使っております、別名だけです。）
+３：型を変更後、パータンの最新化する必要です。(ビルドエラーが発生)
+4：Conditionsの使い方(grid)を制限する (一覧のページソースのConditionsに書く)
+５：起動画面としての設定（開始オブジェクトとして設定）
+６：型の変換処理, toSTR, toNumric
+７：データの初期化処理はRulesにやる
+８：Logout処理、WebSession.clear ,login.call()
+９：UserActionのカスタマイズ処理（WorkFlow）
+１０：一覧画面のevent通常はGrid.load、Loadinngする時に制限処理を行うことができる
+１１：ボタンにeventを作成  Event  &btname　　　（grid.refersh）最新化処理など
+１２：エラー表示の場所（？どう変更）
+
+12/19
+１：登録画面非表示、詳細画面に表示、更新画面非表示（？）
+２：WebPanelのTableのHeightがパセントにサーポトしないため、 screenDetectを使う
+３：图表用QueryViewer控件。
+４：在一个表里插入数据到另一个表。邮件激活？ (procedureを使う)
+５：Moduleとフォルダなどの区別
+６：ページを共通化出来るか(？)
+７：Web パネルに外部 CSS ファイルを使用する方法（公式サイト参照）
+
+ 12/20
+１：メールの使い方
+２：データ新規作成(procedure)
+３：GeneXus除了transaction可以直接添加数据 其他的要想进行数据更新（新增删除修改）只有三种方式。for each。bc。new endnew
+４：Encrypt.md5(email+pwd+time); ???
+５：webpanle里不可以直接修改和插入数据库。可以用bc
+６：Debug,Log情報の確認処理??  —Preferences のLog Level 或いは Log JDBC Active —>ファイルを指定する
+       Msg().state
+
+12/26
+１：定数の定義方法（共通定数）比如定义一个常量文件（从过程里引用）
+２：其它数据类型
+３：索引采番
+4：structured data type ( 数组 结构体)
+      subtype group （名字不许重复，飞机航班号，出发地点，到达地点，如果用一个address）
+5： External Object 参照。
+6：Master Page(表头，表尾)
+      WebCompontent (把一个页面当成一块)
+
+1/2
+1：signed :负数 （true）
+2：New EndNew  新规数据
+3：Enable national Language support (中文，英文数量)
+4：Generate Object : true (安全设定（画面上不直接输入表命来打开页面)
+5：Procedureの同期、非同期呼び出す処理
+      同期：xxx过程名.Call(parameter)  /Grid.Refresh()
+      非同期：xxx过程名.Submit(“”, parameter)
+6：拖拽方法，不用写方法名称（过程名）
+7：BC(Bussiness Compontent 如何使用?) TRUE ーー＞&Transcation名称
+８：For eachの書き方の理由
+9：开发前的一些设定
+     Date time storage timezone (Application Server以服务器时间为标准时间)
+     Declare referential integrity：NO （数据库的属性 调整数据之间的制约关系）
+     Business Component : true (全局性设置的Enviroment)
+    VersionのなかAttribute のLengthとTable Length
+10:日期空时不表示， blank empty :true
+
+1/4 
+１：for each 有break吗？ 
+２：BC 是如何体现的，原理 TRUE
+３：如何去掉workwithplus
+４：登陆页面可以用workwithplus吗？
+５：Conditions 用于列表页面（grid)
+      例如根据不同权限人数据的显示不显示处理等
+       （在WW列表的Event中获取session的ID，在Condition中做对比
+        when &変数名<>）
+      模糊查询可以用 Like
+     SysuserID like ‘%’+ &変数名 +’%’
+  when  &変数　＜＞
+６：页面跳转的三种方式(call, link,直接再打开一个页面，Popup)
+7:QueryReportの使い方
+   7.1 :先拖放QueryViewer至DashBoad，
+   7.2: 再为表单独生成Query Object)设置要显示的属性 和 参数 para 及Filters （sysUserID=&変数名 when 条件)
+   7.3 : 回到Dashboad界面在Event中调用 QueryViewer.object = QueryContract(&変数名) 获取数据 调用object时不要用Call
+          以上处理在 DashBoard中
+
+　7.4 有基表的Grid（トランザクションある）
+　　　，无基表的Grid,
+Grid和Free Style Grid
+7.5:  iis报错，在装framework 之前
+      C:/Windows/Microsoft.NET/Framework/v4.0.30319/aspnet_regiis -i
+7.6：webpanle 里面的页面内跳转 如何写Link？？？ 
+7.7:  java バージョン問題を注意する必要。
+7.8  for each 中的where or 条件。
+7.9 : 在Webpanel里如何实现页面跳转， 不直接写URL
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+2018 1/7
+1: new endnew の使い方 (排它时不要用这个， 用BC, Save Commit)
+New
+    A = 1
+    B = 1
+    PCalc.Call() (他のプログラムを呼び出し)
+When Duplicate
+    For each
+         B = 2       
+    Endfor
+EndNew
+ーーーーーーーーーーーーーーーーーーーー
+For Each
+    Where hogeAge < 18
+    New
+        ParentHogeID = 'P' + hogeID
+        ParentHogeName = hogeName + 'の親'
+    EndNew
+EndFor
+GeneXus備忘録
+
+http://hiroki2genexus.hatenablog.com/
+＊＊＊Udp メソッド
+ーーーーーーーーーーーーーーーーーーーーーBCの使い方ーーーーーーーーーーーーーー
+オートナンバー取得
+http://www.itcowork.co.jp/blog/?p=1199
+&Transaction1 = new()
+//&Transaction1.ID	オートナンバー
+&Transaction1.NAME = "主キー取得テスト(BusinessComponent)"
+ 
+// 保存
+&Transaction1.Save()
+ 
+If &Transaction1.Success()
+	// 成功
+	MSG(&Transaction1.ID.ToString())
+	Commit
+Else
+	// 失敗
+	For &Message in &Transaction1.GetMessages()
+		MSG(&Message.Description)
+	Endfor
+	Rollback
+Endif
+
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+２：プロシージャー内の関数
+http://wiki.genexus.jp/hwiki.aspx?%E3%83%97%E3%83%AD%E3%82%B7%E3%83%BC%E3%82%B8%E3%83%A3%E3%83%BC%E5%86%85%E3%81%AE%E9%96%A2%E6%95%B0,
+時間の加算処理
+AddMinutes
+
+3：Rules中の属性を説明 
+４：如何返回一个对象？ （用BC？）
+http://wiki.genexus.jp/hwiki.aspx?%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88
+５：エラーメッセージの処理
+http://wiki.genexus.jp/hwiki.aspx?%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88%E3%81%AE%E3%82%A8%E3%83%A9%E3%83%BC%E5%87%A6%E7%90%86
+６：効率化（For Each)
+ Blocking 1000
+Blocking節はつまるところ大量のデータの削除・更新・挿入をするのであればある程度まとめてからDBサーバに投げる
+7：注意大小写 link=全小写
+     注意按钮的Event名称
+
+8：在procedure中查看变量的值 log
+９：URLパラメータを取得　并打开一个TRANSACTION
+http://wiki.genexus.jp/hwiki.aspx?Parm+%E3%83%AB%E3%83%BC%E3%83%AB,
+http://www.itcowork.co.jp/blog/?p=1188
+
+10: URLのモード変数　Mode('INS':挿入'UPD':更新'DLT’:削除'DSP':表示)
+http://wiki.genexus.jp/hwiki.aspx?Mode+%E5%A4%89%E6%95%B0, 
+
+2018/01/10 水曜日
+1:  Rules 里的组件讲解　？
+2: 如何写多个条件 ？（or and）http://wiki.genexus.jp/hwiki.aspx?If+%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89,
+3：log 文件出力。？
+4：New EndNew 的错误捕获
+５：JavaScript http://wiki.genexus.jp/hwiki.aspx?%E5%A4%96%E9%83%A8%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6+JavaScript+%E3%82%B3%E3%83%BC%E3%83%89%E3%81%8B%E3%82%89+GeneXus+%E3%81%AE%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95,
+
+６：安全check .
+      判断已登陆状态。
+      param(inquiry)
+   尽量用object.call()
+ wwp尽量少用。 
+7：排他处理 (For each)
+8：HypeLink 一般用于外部系统的URL 、内部はTextBlockを使う(Event Enterの中にCall セキュリティのため)
+9：如何将一个数值型 设为NULL
+10: BCのスクリプトタスクの応用http://wiki.genexus.jp/hwiki.aspx?%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%82%BF%E3%82%B9%E3%82%AF%E3%81%AE%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3,
+
+2018/01/13
+1: Msg在页面中的表示位置。(Text Block)
+2:注意用URL打开WebPanle时， GET参数之间用“，”号隔开，不用写参数名称
+
+2018/01/14
+１：SD Panel のMain program 属性 TRUE 一个程序只能设定一个
+        (Set As Startup Objectを設定すると　Main programの属性がTRUEになる)
+       APPlicationName = APPの名称
+      1.2 Default Layout Orientation :Default (横縦両方)
+      1.3 Android Version Code 下载自动更新 （加小数点，自动更新但不自动下载APP)
+             ※ (isoは別、該当属性が無効）
+      1.4 Update URL : Service 的URL+ apk目录  例：（http://localhost/TrainApp.Netenvironment/AppCompanyList.apk）
+             ※ (手机版本和服务器上的版本不一致的情况下，会从上述地址中下载并更新)
+
+      ＊＊＊＊＊＊＊＊＊＊＊＊IOS＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
+　　1.5 Purpose Strings (手机的各种开发选项卡的设定处理,蓝牙，麦克风等硬件选项也包括，会自动弹出对话框)
+      1.6 App Transport Security のプロトコル　Allows Arbitrary Loads : TRUE
+      1.7 Show Horizontal Line Separator Between Rows :显示每一行在Table中之间的分隔线：TRUE
+            (HorizontalLine)のCSSも設定できる background color
+      1.8 ApplicationBarの色設定など (ApplicationBar class) 、Button など
+      1.9 imageのDensity: 一倍图， 1.5倍， 2倍，4倍图
+      1.10  Rendering Mode : Original 显示原图，不做优化
+       1.11 Tabs及びTabs属性 Form.caption
+               (caption, image/Unselected Imageを設定する)
+
+
+２：NetWork: Connectivity Support :在线和离线模式
+3：Enable Data Caching: false
+4：Invisible Mode: Keep Space(保留隐藏控件的空间)/Collapse Space
+5：Row Style (Width、Height)
+6：Auto Grow: TRUE 自动(是否自动生长， 超过了上面的Row Style 值是否自适应)
+7：1-6是做list, 如果是做新增，直接拖属性即可。 
+     width,heigh 为0的情况下 撑满整个格子
+
+8：// 服务端事件 : Start、 Refresh Load
+     //  客户端事件要用 Composite  /End
+        使用Rest 协议交互 （要用procedure 来交互）
+活用复制，粘贴项目名称。 new endnew
+     procedure—>Expose as Web Service:TRUE
+    REST Protocol :TRUE
+9: msg (‘’,nowait) —>显示完后自动消失！
+１０：ビルド時の設定: Multidex Build :TRUE
+１１：Services URL: http:// 要注意
+１２：Live Editing :所见即所得　（*********手机端的调试时非常重要 *******）
+１３：Viewの複用：　Save As
+１４：GridのDefault Action をクリックして、IDをXXViewに渡す
+１５：返回图标  
+            Sub ‘GXUP’ return EndSub
+１６：Logout処理にMasterPageを以下に修正する
+          Do ActionLogOut
+            &Websession.Destroy()
+              Login.Call() 
+        
+2018/01/17 
+１：创建Transcation，想用BC，ForEach,等。 来读取存在的DB。
+２：物理削除、論理削除
+
+2018/01/22 
+１：Reverse EngineerIng 処理
+http://wp.asc-net.co.jp/genexus_existing_db/
+
+２：反转DB时，某DB的字段定义相同的情况下，能够反转吗？
+———
+2018/01/26 
+１：Foreach Count 多表 ,无关联
+http://g-mind.blogspot.jp/2013/04/foreach-and-local-formula-in-genexus.html
+
+2018/01/29
+１：PropertyのFormatをデフォルトのTextからRaw HTMLに変更します。

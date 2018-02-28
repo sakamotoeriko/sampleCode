@@ -1,0 +1,53 @@
+wagby メッセージのカスタマイズ
+
+https://wagby.com/manual7/operation-script-inputcheck.html#errormsg
+
+一括処理のカスタマイズ処理
+https://wagby.com/manual7/operation-script-updaterule.html
+画面遷移
+https://wagby.com/manual7/operation-script-updaterule.html
+
+データ配列の処理
+https://wagby.com/manual7/operation-script-basicrule.html
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+wagby js　開発について
+Hibernate 
+createSQLQuery
+1:http://blog.csdn.net/jacman/article/details/8591152 
+
+nashorn
+http://docs.oracle.com/javase/jp/8/docs/technotes/guides/scripting/prog_guide/javascript.html
+
+ecmacscript
+http://www.w3school.com.cn/js/pro_js_keywords.asp
+
+//文章紹介
+http://www.infoq.com/cn/articles/nashorn
+//
+wagby コツまとめサイト
+https://www.apsp.co.jp/index.php?q=oneword
+ーーーーーーーーーーーーーーwagby eclipseーーーーーーーーーーーーーーーーーーーーーーーーーー
+Eclipse
+VM
+-Dcatalina.base="/Users/ice/Documents/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0" -Dcatalina.home="/Users/ice/Desktop/Wagby-7.9.2/wagbyapp" -Dwtp.deploy="/Users/ice/Documents/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps" -Djava.endorsed.dirs="/Users/ice/Desktop/Wagby-7.9.2/wagbyapp/endorsed"
+-Djava.security.auth.login.config="/Users/ice/Desktop/Wagby-7.9.2/wagbyapp/conf/app_jaas.config"
+ -XX:MaxPermSize="192m"
+ -XX:PermSize="128m"
+ -Dsun.nio.cs.map="x-windows-iso2022jp/ISO-2022-JP"
+ -Duser.timezone="Asia/Tokyo"
+ -Dorg.apache.jasper.compiler.Parser.STRICT_QUOTE_ESCAPING=“false"
+/Users/ice/Desktop/Wagby-7.9.2/wagbyapp/bin
+
+ーーーーーーーーーーーーーーotherーーーーーーーーーーーーーーーーーーーーーーーーーー
+Wag by スクリプト
+https://wagby.com/manual7/operation-script-excelfunction.html
+
+waggly sql log
+log4j.logger.org.hibernate.SQL=DEBUG
+wagbyapp\webapps\$(APPNAME)\WEB-INF\classes\log4j.properties
+ビルドしたアプリケーションの hibernate.cfg.xml を変更することで、Hibernate が生成する HQL を直接、確認する方法を説明します。
+
+
+wagby script エラー処理　
+https://wagby.com/manual7/operation-script-inputcheck.html
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
